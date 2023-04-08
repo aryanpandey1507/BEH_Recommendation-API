@@ -6,9 +6,9 @@
 
 **POST--** /comment/add -> Creates a new **comment** on the existing blog from any of the user  
 
-**GET--** /user/:userid/level/:levelno -> Fetches the friends of the user having the given **:userid** who are of a certain level.**(Like Linkedin Recommendation System)**
+<u>**GET--**</u> /user/:userid/level/:levelno -> Fetches the friends of the user having the given **:userid** who are of a certain level.**(Like Linkedin Recommendation System)**
 
-Tech Stack  -> **NodeJs , MongoDB**  
+<u>Tech Stack</u>  -> **NodeJs , MongoDB**  
 
 
-**Schema Design**
+<u>**Schema Design**</u>
