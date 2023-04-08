@@ -18,6 +18,8 @@
 
 **For fetching the friends of the entered user at every level **
 
+The following function is called at the endpoint -   <u>**GET--**</u> /user/:userid/level/:levelno  
+
 ```
 
 module.exports.GetUserByLevel=async(req,res)=>{
@@ -26,16 +28,12 @@ module.exports.GetUserByLevel=async(req,res)=>{
 
         var {userId, levelno} = req.params;
         const userDet = await User.findById(userId);
-
-        
         var friends = new Set();
+        
         friends.add(userDet);
 
-
         while(levelno--){
-
-            for(let i of friends){
-                
+               for(let i of friends){
                 
                 let id = i._id;
                 var blogsArray=[];
@@ -43,13 +41,9 @@ module.exports.GetUserByLevel=async(req,res)=>{
             
                 
                 for(let i = 0 ; i < blogs.length ; i++){
-
-                    blogsArray.push(blogs[i]);
-
-                }
-                
-                
-            }
+                        blogsArray.push(blogs[i]);
+                 }
+             }
 
             
 
@@ -57,37 +51,24 @@ module.exports.GetUserByLevel=async(req,res)=>{
             for(let i = 0 ; i < blogsArray.length ; i++){
 
                 const BlogDetails=await Blog.findById(blogsArray[i].blogId);
-                
-                
-                for(let j = 0 ; j <BlogDetails.comments.length;j++){
-    
-                    
+                   for(let j = 0 ; j <BlogDetails.comments.length;j++){
                     const friend = await User.findById(BlogDetails.comments[j].user);
                     friends.add(friend)
     
                 }
             }
-            
-
-
-        }
+         }
        
         
         friends.delete(userDet)
         var friendsArray = Array.from(friends)
-
-
         
         return res.status(400).json({
             message:  ` The level ${levelno} friends of the given user. `,
             friendsArray
         })
 
-
-
-        
-
-    }catch(err){
+       }catch(err){
 
         console.error(err);
         return res.status(500).json({
