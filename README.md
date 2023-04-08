@@ -11,7 +11,8 @@
 <u>Tech Stack</u>  -> **NodeJs , MongoDB**  
 
 
-<u>**Schema Design**</u>
+
+![**Schema Design**](https://user-images.githubusercontent.com/71880450/230735044-5246aadc-aa44-4365-ab5f-a1dfc34ee1db.png)
 
 
 
